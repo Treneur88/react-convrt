@@ -1,0 +1,96 @@
+.img {
+    max-width: 10rem;
+    max-height: 8rem;
+    margin-top: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 10rem;
+    height: 12rem; /* Updated */
+}
+
+.viewer {
+    margin: 1rem;
+    overflow-y: scroll;
+    max-height: 30rem;
+    min-height: 20rem;
+}
+
+.pub {
+    min-height: 35rem;
+}
+
+.viewer p {
+    margin-top: 1rem;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Updated */
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(15, 15, 15);
+}
+
+.list li {
+    margin-left: 3rem;
+    margin-top: 2rem;
+    padding: 0.25rem 0.5rem;
+    background-color: rgb(26, 26, 26);
+    min-height: 13rem; /* Use min-height instead of height */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end; /* Updated */
+}
+
+.menbut {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0rem 1rem;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menbut:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.menbut:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.mybut {
+    background-color: rgb(4, 196, 180);
+    
+}
+
+.pubbut {
+    background-color: rgb(0, 149, 194);
+}
+
+.create{
+    background-color: rgb(15, 15, 15);
+    padding: 0.2rem 0.5rem;
+}

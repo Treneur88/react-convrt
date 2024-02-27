@@ -1,0 +1,23 @@
+.imager {
+    display: flex;
+    flex-direction: row; /* Change flex-direction to row */
+    align-items: center; /* Align items vertically */
+    font-size: calc(10px + 1vmin);
+    color: white;
+    margin: auto; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+}
+
+.imager img {
+    max-width: 20rem;
+    max-height: 20rem;
+}
+
+.logo1{
+    height: 2rem;
+    pointer-events: none;
+    margin-bottom: 2rem;
+}
+

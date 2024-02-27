@@ -13,6 +13,10 @@
   }
 }
 
+.signup {
+  border: 1px solid rgb(37, 150, 190);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -22,6 +26,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.logo {
+  height: 2rem;
+  pointer-events: none;
+
 }
 
 .App-link {
@@ -35,4 +45,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Custom Sidebar */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #282c34;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4e4e4e;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #37a6c4;
+}
+
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #282c34;
 }

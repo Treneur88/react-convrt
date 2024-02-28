@@ -47,47 +47,38 @@ export default function Animation() {
     }
 
     function upload() {
-        var color1 = document.getElementById('colorPicker').value;
-        var color2 = document.getElementById('colorPicker2').value;
-        var image = document.getElementById('imageUpload2').files[0];
+        if (localStorage.getItem('username') == null || localStorage.getItem("username") == '') {
+            var color1 = document.getElementById('colorPicker').value;
+            var color2 = document.getElementById('colorPicker2').value;
+            var image = document.getElementById('imageUpload2').files[0];
 
-        const form = new FormData();
-        form.append('file', image);
-        form.append('color1', color1);
-        form.append('color2', color2);
-
-
-        function naming() {
-            var name = uuidv4();
-            return name.slice(0, 10);
-
-        }
-
-        var namerl = naming();
+            const form = new FormData();
+            form.append('file', image);
+            form.append('color1', color1);
+            form.append('color2', color2);
 
 
-        const checkName = async (name) => {
-            console.log(localStorage.getItem('public'));
-            var chec = localStorage.getItem('public') === 'true';
-            console.log(chec);
-            console.log(localStorage.getItem('public') == 'true');
-            if (chec) {
-                var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: true, date: Date.now() };
-                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
-                    console.log("Public name added to the database.")
-                });
+            function naming() {
+                var name = uuidv4();
+                return name.slice(0, 10);
 
-            } else {
-                var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: false, date: Date.now() };
-                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
-                    console.log("Public name added to the database.")
-                });
             }
 
-            
+            var namerl = naming();
 
-            
-            
+
+            const checkName = async (name) => {
+                console.log(localStorage.getItem('public'));
+                var chec = localStorage.getItem('public') === 'true';
+                console.log(chec);
+                console.log(localStorage.getItem('public') == 'true');
+
+                var name = { name: namerl + ".gif", user: "not-signed", public1: false, date: Date.now() };
+                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                    console.log("Public name added to the database.")
+                });
+
+
                 console.log('The name does not exist in the database.');
                 form.append('name', namerl);
                 console.log(form.get('name'));
@@ -101,14 +92,69 @@ export default function Animation() {
                         window.open("/image/" + namerl + ".gif", "_self")
                     });
 
-                
-            
-            
-        };
+            };
+            checkName(namerl);
+        } else {
+            var color1 = document.getElementById('colorPicker').value;
+            var color2 = document.getElementById('colorPicker2').value;
+            var image = document.getElementById('imageUpload2').files[0];
+
+            const form = new FormData();
+            form.append('file', image);
+            form.append('color1', color1);
+            form.append('color2', color2);
+
+
+            function naming() {
+                var name = uuidv4();
+                return name.slice(0, 10);
+
+            }
+
+            var namerl = naming();
+
+
+            const checkName = async (name) => {
+                console.log(localStorage.getItem('public'));
+                var chec = localStorage.getItem('public') === 'true';
+                console.log(chec);
+                console.log(localStorage.getItem('public') == 'true');
+                if (chec) {
+                    var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: true, date: Date.now() };
+                    axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                        console.log("Public name added to the database.")
+                    });
+
+                } else {
+                    var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: false, date: Date.now() };
+                    axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                        console.log("Public name added to the database.")
+                    });
+                }
 
 
 
-        checkName(namerl);
+
+
+                console.log('The name does not exist in the database.');
+                form.append('name', namerl);
+                console.log(form.get('name'));
+                axios.post('https://back-1-7wvo.onrender.com/animated/', form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                    .then((response) => {
+                        console.log(response);
+                        window.open("/image/" + namerl + ".gif", "_self")
+                    });
+
+
+
+
+            };
+            checkName(namerl);
+        }
     }
 
     return (

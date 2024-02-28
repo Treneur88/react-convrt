@@ -340,6 +340,9 @@ export default function Home() {
                     });
                 }
             }
+            checkName(namerl);
+            const file = document.getElementById('imageUpload').files[0];
+            console.log(file);
         } else {
             if (document.getElementById('checkPublic').checked) {
                 console.log('checked')

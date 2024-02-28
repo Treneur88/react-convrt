@@ -29,13 +29,7 @@ function Pub() {
                         link.href = '/image/' + response.data[i].name;
                         var img = document.createElement('img');
                         img.src = 'https://back-1-7wvo.onrender.com/images/' + response.data[i].name;
-                        item.addEventListener('click', function () {
-                            if (response.data[i]) {
-                                var imageName = response.data[i].name; // Get the image name
-                                var linker = '/image/' + imageName;
-                                window.open(linker, '_blank'); // Open the link in a new window
-                            }
-                        });
+                        
                         img.className = 'img';
                         var create = document.createElement('p');
                         var diff = Date.now() - response.data[i].date;
@@ -108,13 +102,7 @@ function Pub() {
                         link.href = '/image/' + response.data[i].name;
                         var img = document.createElement('img');
                         img.src = 'https://back-1-7wvo.onrender.com/images/' + response.data[i].name;
-                        item.addEventListener('click', function () {
-                            if (response.data[i]) {
-                                var imageName = response.data[i].name; // Get the image name
-                                var linker = '/image/' + imageName;
-                                window.open(linker, '_blank'); // Open the link in a new window
-                            }
-                        });
+                        
                         img.className = 'img';
                         var create = document.createElement('p');
                         var diff = Date.now() - response.data[i].date;
@@ -181,13 +169,7 @@ function Pub() {
                         link.href = '/image/' + response.data[i].name;
                         var img = document.createElement('img');
                         img.src = 'https://back-1-7wvo.onrender.com/images/' + response.data[i].name;
-                        item.addEventListener('click', function () {
-                            if (response.data[i]) {
-                                var imageName = response.data[i].name; // Get the image name
-                                var linker = '/image/' + imageName;
-                                window.open(linker, '_blank'); // Open the link in a new window
-                            }
-                        });
+                        
                         img.className = 'img';
                         var create = document.createElement('p');
                         var diff = Date.now() - response.data[i].date;

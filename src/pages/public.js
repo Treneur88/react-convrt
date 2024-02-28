@@ -28,7 +28,7 @@ function Pub() {
                         link.classList.add('link');
                         link.href = '/image/' + response.data[i].name;
                         var img = document.createElement('img');
-                        img.src = '/images/' + response.data[i].name;
+                        img.src = 'https://back-1-7wvo.onrender.com/images/' + response.data[i].name;
                         item.addEventListener('click', function () {
                             if (response.data[i]) {
                                 var imageName = response.data[i].name; // Get the image name
@@ -107,7 +107,7 @@ function Pub() {
                         link.classList.add('link');
                         link.href = '/image/' + response.data[i].name;
                         var img = document.createElement('img');
-                        img.src = '/images/' + response.data[i].name;
+                        img.src = 'https://back-1-7wvo.onrender.com/images/' + response.data[i].name;
                         item.addEventListener('click', function () {
                             if (response.data[i]) {
                                 var imageName = response.data[i].name; // Get the image name

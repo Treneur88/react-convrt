@@ -5,67 +5,105 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Home() {
     const [image, setImage] = useState('');
     function handleApi(e) {
-        if (localStorage.getItem('username') == null || localStorage.getItem('username') == '') { } else {
-        if (document.getElementById('checkPublic').checked) {
-            console.log('checked')
-            localStorage.setItem('public', 'true');
-        }
-        else {
-            console.log('not checked')
-            localStorage.setItem('public', 'false');
-        }
+        if (localStorage.getItem('username') == null || localStorage.getItem('username') == '') {
+            console.log('not logged in')
+            function naming() {
+                var name = uuidv4();
+                return name.slice(0, 10);
 
-        function naming() {
-            var name = uuidv4();
-            return name.slice(0, 10);
+            }
+            document.getElementById("up").innerHTML = "Uploading..."
 
-        }
-        document.getElementById("up").innerHTML = "Uploading..."
-
-        var namerl = naming();
-        const checkName = async (name) => {
-            name = name + ".jpg";
+            var namerl = naming();
+            const checkName = async (name) => {
+                name = name + ".jpg";
 
 
 
 
-            console.log('The name does not exist in the database.');
-            const file = document.getElementById('imageUpload').files[0];
-            console.log(file);
-            const data = new FormData();
-            data.append('file', file);
-            data.append('name', name);
-            var date = Date.now();
+                console.log('The name does not exist in the database.');
+                const file = document.getElementById('imageUpload').files[0];
+                console.log(file);
+                const data = new FormData();
+                data.append('file', file);
+                data.append('name', name);
+                var date = Date.now();
 
-            if (localStorage.getItem('public') == 'true') {
-                var namer = { name: name, user: localStorage.getItem('username'), public1: true, date: Date.now() };
-                axios.post('https://back-1-7wvo.onrender.com/logImage/', namer).then((response) => {
-                    console.log("Public name added to the database.")
-                });
 
-            } else {
                 var namer = { name: name, user: localStorage.getItem('username'), public1: false, date: Date.now() };
                 axios.post('https://back-1-7wvo.onrender.com/logImage/', namer).then((response) => {
                     console.log("Public name added to the database.")
                 });
+
+
+                axios.post('https://back-1-7wvo.onrender.com/uploads/', data)
+                    .then((response) => {
+                        console.log(response);
+                        console.log(name)
+                        window.open("/image/" + name, "_self")
+                    });
+            }
+        } else {
+            if (document.getElementById('checkPublic').checked) {
+                console.log('checked')
+                localStorage.setItem('public', 'true');
+            }
+            else {
+                console.log('not checked')
+                localStorage.setItem('public', 'false');
             }
 
-            axios.post('https://back-1-7wvo.onrender.com/uploads/', data)
-                .then((response) => {
-                    console.log(response);
-                    console.log(name)
-                    window.open("/image/" + name, "_self")
-                });
+            function naming() {
+                var name = uuidv4();
+                return name.slice(0, 10);
+
+            }
+            document.getElementById("up").innerHTML = "Uploading..."
+
+            var namerl = naming();
+            const checkName = async (name) => {
+                name = name + ".jpg";
 
 
-        };
+
+
+                console.log('The name does not exist in the database.');
+                const file = document.getElementById('imageUpload').files[0];
+                console.log(file);
+                const data = new FormData();
+                data.append('file', file);
+                data.append('name', name);
+                var date = Date.now();
+
+                if (localStorage.getItem('public') == 'true') {
+                    var namer = { name: name, user: localStorage.getItem('username'), public1: true, date: Date.now() };
+                    axios.post('https://back-1-7wvo.onrender.com/logImage/', namer).then((response) => {
+                        console.log("Public name added to the database.")
+                    });
+
+                } else {
+                    var namer = { name: name, user: localStorage.getItem('username'), public1: false, date: Date.now() };
+                    axios.post('https://back-1-7wvo.onrender.com/logImage/', namer).then((response) => {
+                        console.log("Public name added to the database.")
+                    });
+                }
+
+                axios.post('https://back-1-7wvo.onrender.com/uploads/', data)
+                    .then((response) => {
+                        console.log(response);
+                        console.log(name)
+                        window.open("/image/" + name, "_self")
+                    });
+
+
+            };
 
 
 
-        checkName(namerl);
-        const file = document.getElementById('imageUpload').files[0];
-        console.log(file);
-    }
+            checkName(namerl);
+            const file = document.getElementById('imageUpload').files[0];
+            console.log(file);
+        }
 
     }
 
@@ -103,7 +141,7 @@ export default function Home() {
 
 
     function handleApi(e) {
-        if (localStorage.getItem('username') == null || localStorage.getItem('username') ) { }
+        if (localStorage.getItem('username') == null || localStorage.getItem('username')) { }
         else {
             if (document.getElementById('checkPublic').checked) {
                 console.log('checked')

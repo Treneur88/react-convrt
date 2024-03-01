@@ -8,16 +8,77 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 5rem;
+    background-color: rgb(19, 19, 19);
+    padding-bottom: 3rem;
+    margin-right: 8rem;
+    width: 65rem;
+    padding-left: 5rem;
+    padding-top: 3rem;
+}
+
+body {
+    background-color: black;
 }
 
 .imager img {
-    max-width: 20rem;
-    max-height: 20rem;
+    max-width: 30rem;
+    max-height: 30rem;
 }
 
-.logo1{
+.logo1 {
     height: 2rem;
     pointer-events: none;
     margin-bottom: 2rem;
+    margin-top: -10rem;
 }
 
+.contains {
+    margin-top: 5rem;
+    margin-right: 4rem;
+    text-align: left;
+}
+
+.like {
+    font-size: 0.6rem;
+    background-color: white;
+    color: black;
+    padding: 0.2rem;
+    border-radius: 0.6rem;
+    margin-top: -0.8rem;
+}
+
+.titleL {
+    background-color: black;
+    color: white;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .imager {
+        flex-direction: column; /* Change flex-direction to column */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        width: auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .imager img {
+        max-width: 100%;
+        max-height: auto;
+    }
+
+    .logo1 {
+        margin-top: -5rem;
+    }
+
+    .contains {
+        margin-top: 2rem;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .like {
+        margin-top: 0;
+    }
+}

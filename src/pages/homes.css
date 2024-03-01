@@ -1,14 +1,13 @@
 body {
     background-color: #131313;
-    
     color: #ffffff;
 }
 
 .homer {
-    height: 30rem;
+    height: 29rem;
 }
 
-.labelcheck{
+.labelcheck {
     color: #fff;
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -41,6 +40,9 @@ body {
     border-radius: 3px;
 }
 
+.ex1 {
+    color: white;
+}
 .checkbox:hover input ~ .checkmark {
     background-color: #ccc;
 }
@@ -69,27 +71,11 @@ body {
     transform: rotate(45deg);
 }
 
-h2 {
+h2, h1, h3, h4,  {
     font-family: "Arial Black", sans-serif;
 }
 
-h1 {
-    font-family: "Arial Black", sans-serif;
-}
-
-h3 {
-    font-family: "Arial Black", sans-serif;
-}
-
-h4 {
-    font-family: "Arial Black", sans-serif;
-}
-
-p {
-    font-family: "Arial", sans-serif;
-}
-
-.homer h2{
+.homer h2 {
     margin-top: 4rem;
     color: #fff;
     font-size: 2rem;
@@ -100,4 +86,92 @@ p {
     color: #fff;
     font-size: 1rem;
     margin-bottom: 2rem;
+}
+
+.upload-main {
+    background-color: #4fbdf0;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    text-shadow: 2px 2px 4px #000000;
+    color: white;
+}
+
+.ex {
+    margin-top: -3rem;
+    font-size: 0.6rem;
+    color: white;
+}
+
+.ex2 {
+    width: 3rem;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.ef1 {
+    border: 0.6px solid #4fbdf0;
+}
+
+.ef2 {
+    border-radius: 50%;
+}
+
+.ex-a {
+    background-color: #4fbdf0;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    margin-top: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.show-ex {
+    margin-top: 2rem;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 600px) {
+    .homer {
+        margin-top: 4rem;
+        height: auto;
+        margin-bottom: 5rem;
+    }
+
+    .homer h2 {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .homer p {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .upload-main {
+        font-size: 1.2rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .ex {
+        margin-top: -2rem;
+        font-size: 0.5rem;
+    }
+
+    .ex2 {
+        width: 2rem;
+        margin-right: 0.2rem;
+        margin-left: 0.2rem;
+    }
+
+    .ex-a {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
+        margin-top: 1rem;
+    }
+
+    .show-ex {
+        margin-top: 1rem;
+    }
 }

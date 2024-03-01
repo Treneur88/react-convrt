@@ -4,12 +4,10 @@ import { BrowserRouter as Router, Route, Switch, Routes } from "react-router-dom
 import 'bootstrap/dist/css/bootstrap.css';
 import Home from './/pages/home';
 import Signup from './pages/signup';
-import Cropper from './pages/cropper';
 import Login from './pages/login';
 import Image from './pages/images';
 import Anim from './pages/animation';
 import Pub from './pages/public';
-
 function App() {
   const userExists = localStorage.getItem("username") == null ? false : true;
   const user = JSON.parse(localStorage.getItem("user"));
@@ -25,23 +23,23 @@ function App() {
   return (
     <div className="App">
       <div className="home">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+          <div className="container-fluid ghij">
             <a className="navbar-brand" href="/"><img src='/logo.png' className='logo'></img></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse float-right" id="navbarNav">
-              <ul className="navbar-nav ml-auto float-right">
+            <div className="collapse navbar-collapse float-right" id="navbarNav" >
+              <ul className="navbar-nav ms-auto float-right justify-content-end"> {/* Add justify-content-end class */}
                 <>
                   <li className="nav-item">
                     <a className="nav-link" href="/public">Recent Uploads</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link signup" href="/signup" style={{ display: userExists ? 'none' : 'block' }}>Signup</a>
+                    <a className="signup" href="/signup" style={{ display: userExists ? 'none' : 'block' }}>Register</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link login" href="/login" style={{ display: userExists ? 'none' : 'block' }}>Login</a>
+                    <a className="login" href="/login" style={{ display: userExists ? 'none' : 'block' }}>Login</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#" style={{ display: userExists ? 'block' : 'none' }}>{userName}</a>
@@ -59,17 +57,34 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/cropper" element={<Cropper />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/image/:name" element={<Image />} />
+          <Route path="/share/:name" element={<Image />} />
           <Route path="/animation" element={<Anim />} />
           <Route path="/public" element={<Pub />} />
         </Routes>
       </Router>
-      
+
+      <footer class="footer-black foot">
+        <div class="container">
+          <div className='foot-s-a'>
+          <p className='foot-s'>Information</p>
+          <p className='foot-a'>Terms of Service</p>
+          <p className='foot-a'>Privacy Policy</p>
+          <p className='foot-a'>F.A.Q</p>
+          </div>
+          <p class="text-center">© 2024 All rights reserved Picto</p>
+          <div className='foot-a-s'>
+            <p className='foot-s'>Images uploaded</p>
+            <p className='foot-a'>0</p>
+            <p className='foot-s'>Screenshots taken</p>
+            <p className='foot-a'>0</p>
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }
 
 export default App;
- 
+

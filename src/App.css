@@ -2,9 +2,23 @@
   text-align: center;
 }
 
+body {
+  background-color: black;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.foot-s{
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -29,7 +43,7 @@
 }
 
 .logo {
-  height: 2rem;
+  height: 1.5rem;
   pointer-events: none;
 
 }
@@ -71,6 +85,65 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: #282c34;
+  padding: 0.4rem;
+  background-color: #0e0e0e;
+}
+
+.foot-s{
+  font-size: 0.7rem;
+  padding: 0;
+  margin: 0;
+}
+
+.text-center{
+  font-size: 0.6rem;
+  color: #3b3b3b;
+}
+
+.foot-a{
+  color: #ffffff;
+  font-size: 0.8rem;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.foot-s-a p {
+  text-align: left;
+}
+
+.foot-a-s p {
+  text-align: right;
+}
+
+.ghij{
+  justify-content: space-between;
+}
+
+.login{
+  background-color: #49b6e9f6;
+  text-decoration: none;
+  display: block;
+  padding: 0.1rem;
+  margin-top: 0.4rem;
+  color: white;
+  text-decoration: none;
+  border: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  width: 4rem;
+  border-radius: 0.5rem;
+}
+
+.signup{
+  border: 1px solid #49b6e9f6;
+  text-decoration: none;
+  display: block;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+  margin-top: 0.4rem;
+  color: white;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  width: 5rem;
+  border-radius: 0.5rem;
 }

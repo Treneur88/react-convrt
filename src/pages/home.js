@@ -42,7 +42,7 @@ export default function Home() {
                     .then((response) => {
                         console.log(response);
                         console.log(name)
-                        window.open("/image/" + name, "_self")
+                        window.open("/share/" + name, "_self")
                     });
             }
         } else {
@@ -94,7 +94,7 @@ export default function Home() {
                     .then((response) => {
                         console.log(response);
                         console.log(name)
-                        window.open("/image/" + name, "_self")
+                        window.open("/share/" + name, "_self")
                     });
 
 
@@ -144,7 +144,7 @@ export default function Home() {
                     .then((response) => {
                         console.log(response);
                         console.log(name)
-                        window.open("/image/" + name, "_self")
+                        window.open("/share/" + name, "_self")
                     });
             }
 

@@ -6,46 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Animation() {
     const [imageSrc, setImageSrc] = useState('');
 
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            setImageSrc(reader.result);
-        };
-
-        if (file) {
-            console.log(localStorage.getItem('public') == true);
-            reader.readAsDataURL(file);
-            document.getElementById("preview").style.display = "block";
-            document.getElementById("labelCircle").style.display = "none";
-            document.getElementById("preview-but").style.display = "block";
-        }
-    };
-    function preview() {
-        var color1 = document.getElementById('colorPicker').value;
-        var color2 = document.getElementById('colorPicker2').value;
-        console.log(color1, color2);
-        var preview = document.getElementById('preview');
-        preview.style.animation = `borderAnimation 2s infinite linear`;
-
-        // CSS animation keyframes
-        const styleSheet = document.styleSheets[0];
-        styleSheet.insertRule(`
-            @keyframes borderAnimation {
-                0% {
-                    border-image: linear-gradient(to right, ${color1}, ${color2}) 2;
-                }
-                50% {
-                    border-image: linear-gradient(to right, ${color2}, ${color1}) 2;
-                }
-                100% {
-                    border-image: linear-gradient(to right, ${color1}, ${color2}) 2;
-                }
-            }
-        `, styleSheet.cssRules.length);
-    }
-
+    
     function upload() {
         if (localStorage.getItem('username') == null || localStorage.getItem("username") == '') {
             var color1 = document.getElementById('colorPicker').value;
@@ -74,7 +35,7 @@ export default function Animation() {
                 console.log(localStorage.getItem('public') == 'true');
 
                 var name = { name: namerl + ".gif", user: "not-signed", public1: false, date: Date.now() };
-                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                axios.post('logImage/', name).then((response) => {
                     console.log("Public name added to the database.")
                 });
 
@@ -82,18 +43,23 @@ export default function Animation() {
                 console.log('The name does not exist in the database.');
                 form.append('name', namerl);
                 console.log(form.get('name'));
-                axios.post('https://back-1-7wvo.onrender.com/animated/', form, {
+                axios.post('animated/', form, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 })
                     .then((response) => {
                         console.log(response);
-                        window.open("/image/" + namerl + ".gif", "_self")
+                        window.open("/share/" + namerl + ".gif", "_self")
                     });
 
             };
-            checkName(namerl);
+            if (image.size > 50 * 1024 * 1024) {
+                alert("File size exceeds the limit of 50 MB.");
+                return;
+            } else {
+                checkName(namerl);
+            }
         } else {
             var color1 = document.getElementById('colorPicker').value;
             var color2 = document.getElementById('colorPicker2').value;
@@ -121,13 +87,13 @@ export default function Animation() {
                 console.log(localStorage.getItem('public') == 'true');
                 if (chec) {
                     var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: true, date: Date.now() };
-                    axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                    axios.post('logImage/', name).then((response) => {
                         console.log("Public name added to the database.")
                     });
 
                 } else {
                     var name = { name: namerl + ".gif", user: localStorage.getItem('username'), public1: false, date: Date.now() };
-                    axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                    axios.post('logImage/', name).then((response) => {
                         console.log("Public name added to the database.")
                     });
                 }
@@ -139,21 +105,26 @@ export default function Animation() {
                 console.log('The name does not exist in the database.');
                 form.append('name', namerl);
                 console.log(form.get('name'));
-                axios.post('https://back-1-7wvo.onrender.com/animated/', form, {
+                axios.post('animated/', form, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 })
                     .then((response) => {
                         console.log(response);
-                        window.open("/image/" + namerl + ".gif", "_self")
+                        window.open("/share/" + namerl + ".gif", "_self")
                     });
 
 
 
 
             };
-            checkName(namerl);
+            if (image.size > 50 * 1024 * 1024) {
+                alert("File size exceeds the limit of 50 MB.");
+                return;
+            } else {
+                checkName(namerl);
+            }
         }
     }
 
@@ -204,10 +175,13 @@ export default function Animation() {
 
             var namerl = naming();
             const checkName = async (name) => {
-                name = name + ".jpg";
+                var filer = document.getElementById('imageUpload21').files[0];
+                const fileExtension = filer.name.split('.').pop();
+                console.log('File extension:', fileExtension);
+                name = name + "." + fileExtension;
                 console.log(namerl)
 
-                const response = await fetch('https://back-1-7wvo.onrender.com/checkName', {
+                const response = await fetch('checkName', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -225,6 +199,7 @@ export default function Animation() {
                     console.log('The name exists in the database.');
                 } else {
                     const file1 = document.getElementById('imageUpload21').files[0];
+                    var fe = file1.name.split('.').pop();
                     document.getElementById("labelCircle").innerHTML = "Uploading..."
                     circler(file1, function (circularFile) {
                         const form = new FormData();
@@ -238,16 +213,18 @@ export default function Animation() {
                             form.append('file', circularFile);
                             const data = new FormData();
                             data.append('file', croppedFile);
-                            data.append('name', namerl + ".jpg");
-                            var name = { name: namerl + ".jpg", user: "not-signed", public1: false, date: Date.now() };
-                            axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                            data.append('name', namerl + "." + fe);
+                            var filer = document.getElementById('imageUpload21').files[0];
+                            var fe = filer.split('.').pop();
+                            var name = { name: namerl + "." + fe, user: "not-signed", public1: false, date: Date.now() };
+                            axios.post('logImage/', name).then((response) => {
                                 console.log("Public name added to the database.")
                             });
 
-                            axios.post('https://back-1-7wvo.onrender.com/uploads/', data)
+                            axios.post('uploads/', data)
                                 .then((response) => {
                                     console.log(response);
-                                    window.open("/image/" + namerl + ".jpg", "_self")
+                                    window.open("/share/" + namerl + "." + fe, "_self")
                                 });
                         } else {
                             console.log('No file');
@@ -255,8 +232,14 @@ export default function Animation() {
                     });
                 }
             }
-            checkName(namerl);
-            const file = document.getElementById('imageUpload').files[0];
+            
+            const file = document.getElementById('imageUpload21').files[0];
+            if (file.size > 50 * 1024 * 1024) {
+                alert("File size exceeds the limit of 50 MB.");
+                return;
+            } else {
+                checkName(namerl);
+            }
             console.log(file);
         } else {
            
@@ -269,10 +252,13 @@ export default function Animation() {
 
             var namerl = naming();
             const checkName = async (name) => {
-                name = name + ".jpg";
+                var filer = document.getElementById('imageUpload21').files[0];
+                const fileExtension = filer.name.split('.').pop();
+                console.log('File extension:', fileExtension);
+                name = name + "." + fileExtension;
                 console.log(namerl)
 
-                const response = await fetch('https://back-1-7wvo.onrender.com/checkName', {
+                const response = await fetch('checkName', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -303,24 +289,24 @@ export default function Animation() {
                             form.append('file', circularFile);
                             const data = new FormData();
                             data.append('file', croppedFile);
-                            data.append('name', namerl + ".jpg");
+                            data.append('name', namerl + "." + fileExtension);
                             if (localStorage.getItem('public') == 'true') {
-                                var name = { name: namerl + ".jpg", user: localStorage.getItem('username'), public1: true, date: Date.now() };
-                                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                                var name = { name: namerl + "." + fileExtension, user: localStorage.getItem('username'), public1: true, date: Date.now() };
+                                axios.post('logImage/', name).then((response) => {
                                     console.log("Public name added to the database.")
                                 });
 
                             } else {
-                                var name = { name: namerl + ".jpg", user: localStorage.getItem('username'), public1: false, date: Date.now() };
-                                axios.post('https://back-1-7wvo.onrender.com/logImage/', name).then((response) => {
+                                var name = { name: namerl + "." + fileExtension, user: localStorage.getItem('username'), public1: false, date: Date.now() };
+                                axios.post('logImage/', name).then((response) => {
                                     console.log("Public name added to the database.")
                                 });
                             }
 
-                            axios.post('https://back-1-7wvo.onrender.com/uploads/', data)
+                            axios.post('uploads/', data)
                                 .then((response) => {
                                     console.log(response);
-                                    window.open("/image/" + namerl + ".jpg", "_self")
+                                    window.open("/share/" + namerl + "." + fileExtension, "_self")
                                 });
                         } else {
                             console.log('No file');
@@ -328,8 +314,14 @@ export default function Animation() {
                     });
                 }
             }
-            checkName(namerl);
+            
             const file = document.getElementById('imageUpload21').files[0];
+            if (file.size > 50 * 1024 * 1024) {
+                alert("File size exceeds the limit of 50 MB.");
+                return;
+            } else {
+                checkName(namerl);
+            }
             console.log(file);
         }
 
@@ -343,7 +335,7 @@ export default function Animation() {
             <div className='d-a'>
                 <div className='containeer1'>
                     <div className='d-a1'>
-                        
+                        <div className="color"></div>
                         <div className="color">
                             <input type="color" id="colorPicker" className='picker' value="#FF0000" />
                             <input type="color" id="colorPicker2" className='picker' value="#0000FF"/>
@@ -357,7 +349,7 @@ export default function Animation() {
                         <div className='profile'>
 
                             <input type="file" id="imageUpload2" accept="image/*" hidden onChange={upload} />
-                            <label htmlFor="imageUpload2" id="labelCircle">Upload your Image</label>
+                            <label htmlFor="imageUpload2" id="labelCircle" className='label2'>Upload your Image</label>
                             <br />
 
                         </div>

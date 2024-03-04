@@ -1,17 +1,17 @@
 body {
-    background-color: #131313;
     color: #ffffff;
+    font-size: 16px;
 }
 
 .homer {
-    height: 29rem;
+    height: auto;
+    padding: 2rem;
 }
 
 .labelcheck {
     color: #fff;
     font-size: 1rem;
     margin-bottom: 1rem;
-    margin-left: 0.5rem;
 }
 
 .checkbox {
@@ -40,9 +40,6 @@ body {
     border-radius: 3px;
 }
 
-.ex1 {
-    color: white;
-}
 .checkbox:hover input ~ .checkmark {
     background-color: #ccc;
 }
@@ -71,15 +68,10 @@ body {
     transform: rotate(45deg);
 }
 
-h2, h1, h3, h4,  {
-    font-family: "Arial Black", sans-serif;
-}
-
 .homer h2 {
     margin-top: 4rem;
     color: #fff;
     font-size: 2rem;
-    margin-bottom: 2rem;
 }
 
 .homer p {
@@ -89,11 +81,13 @@ h2, h1, h3, h4,  {
 }
 
 .upload-main {
-    background-color: #4fbdf0;
     font-size: 1.5rem;
     padding: 0.5rem 1rem;
     text-shadow: 2px 2px 4px #000000;
     color: white;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    background-color: #2dccef;
 }
 
 .ex {
@@ -117,13 +111,14 @@ h2, h1, h3, h4,  {
 }
 
 .ex-a {
-    background-color: #4fbdf0;
     font-size: 0.8rem;
     padding: 0.25rem 0.5rem;
     text-decoration: none;
     margin-top: 2rem;
     color: white;
     text-shadow: 2px 2px 4px #000000;
+    border-radius: 0.4rem;
+    background-color: #2dccef;
 }
 
 .show-ex {
@@ -133,9 +128,8 @@ h2, h1, h3, h4,  {
 /* Media Query for Mobile Devices */
 @media only screen and (max-width: 600px) {
     .homer {
+        padding: 1rem;
         margin-top: 4rem;
-        height: auto;
-        margin-bottom: 5rem;
     }
 
     .homer h2 {
@@ -173,5 +167,55 @@ h2, h1, h3, h4,  {
 
     .show-ex {
         margin-top: 1rem;
+    }
+
+    .ex-1-1 {
+        margin-top: -2rem;
+        color: white;
+        padding-bottom: 5rem;
+    }
+}
+
+.ex-1-1 {
+    margin-top: -2rem;
+    color: white;
+    padding-bottom: 5rem;
+}
+
+
+.homer {
+    height: auto;
+    padding: 2rem;
+}
+
+.homer h2 {
+    margin-top: 4rem;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.homer p {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 600px) {
+    .homer {
+        padding: 1rem;
+        margin-top: 4rem;
+        text-align: center; /* Center align text */
+    }
+
+    .homer h2 {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .homer p {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
     }
 }

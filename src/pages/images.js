@@ -6,7 +6,7 @@ export default function Images() {
     const address = sessionStorage.getItem('address');
 
     useEffect(() => {
-        document.getElementById("aad").src = "https://back-1-7wvo.onrender.com/images/" + name;
+        document.getElementById("aad").src = "https://test-picto.onrender.com/images/" + name;
         document.getElementById("imageL").innerHTML = "https://test-picto.onrender.com/share/" + name;
         document.getElementById("DirectL").innerHTML = "https://test-picto.onrender.com/images/" + name;
         document.getElementById("HTMLL").innerText = `<img src="https://test-picto.onrender.com/images/${name}" alt="image">`;
@@ -15,6 +15,7 @@ export default function Images() {
     }, [name]);
 
     return(
+        <div className='imager-container'>
         <div className='imager'>
             <div className='contains'>
                 <img src='/logo.png' alt='logo' className='logo1'/>
@@ -28,6 +29,7 @@ export default function Images() {
                 <p id='BBL' className='like'></p>
             </div>
             <img id="aad" alt="image" />
+        </div>
         </div>
     );
 }

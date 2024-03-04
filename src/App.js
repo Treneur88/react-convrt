@@ -8,11 +8,29 @@ import Login from './pages/login';
 import Image from './pages/images';
 import Anim from './pages/animation';
 import Pub from './pages/public';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import Priv from './pages/privacy';
+import Term from './pages/terms';
+import Faq from './pages/faq';
 function App() {
   const userExists = localStorage.getItem("username") == null ? false : true;
   const user = JSON.parse(localStorage.getItem("user"));
   const userName = localStorage.getItem("username");
   console.log(userExists, userName);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    axios.get('/num')
+      .then(response => {
+        setCount(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+  }, []); // Empty array means this effect runs once on mount
+
+
 
   function logout() {
     localStorage.removeItem("user");
@@ -61,6 +79,9 @@ function App() {
           <Route path="/share/:name" element={<Image />} />
           <Route path="/animation" element={<Anim />} />
           <Route path="/public" element={<Pub />} />
+          <Route path="/policy" element={<Priv />} />
+          <Route path="/terms" element={<Term />} />
+          <Route path="/faq" element={<Faq />} />
         </Routes>
       </Router>
 
@@ -68,14 +89,14 @@ function App() {
         <div class="container">
           <div className='foot-s-a'>
           <p className='foot-s'>Information</p>
-          <p className='foot-a'>Terms of Service</p>
-          <p className='foot-a'>Privacy Policy</p>
-          <p className='foot-a'>F.A.Q</p>
+          <a className='foot-a' href='/terms'>Terms of Service</a><br />
+          <a className='foot-a' href='/policy'>Privacy Policy</a><br />
+          <a className='foot-a' href='/faq'>F.A.Q</a>
           </div>
           <p class="text-center">© 2024 All rights reserved Picto</p>
           <div className='foot-a-s'>
             <p className='foot-s'>Images uploaded</p>
-            <p className='foot-a'>0</p>
+            <p className='foot-a'>{count}</p>
             <p className='foot-s'>Screenshots taken</p>
             <p className='foot-a'>0</p>
           </div>

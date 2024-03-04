@@ -1,9 +1,15 @@
-.App {
-  text-align: center;
+body {
+  background-image: url(/public/copertina.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  font-size: 16px;
 }
 
-body {
-  background-color: black;
+.App {
+  text-align: center;
 }
 
 .App-logo {
@@ -17,13 +23,14 @@ body {
   justify-content: space-between;
 }
 
-.foot-s{
+.foot-s {
   color: white;
+  font-size: 0.7rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+      animation: App-logo-spin infinite 20s linear;
   }
 }
 
@@ -45,7 +52,6 @@ body {
 .logo {
   height: 1.5rem;
   pointer-events: none;
-
 }
 
 .App-link {
@@ -54,10 +60,10 @@ body {
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+      transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+      transform: rotate(360deg);
   }
 }
 
@@ -80,27 +86,27 @@ body {
   background-color: #37a6c4;
 }
 
-
 .foot {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.4rem;
   background-color: #0e0e0e;
+  width: 100%;
 }
 
-.foot-s{
+.foot-s {
   font-size: 0.7rem;
   padding: 0;
   margin: 0;
 }
 
-.text-center{
+.text-center {
   font-size: 0.6rem;
   color: #3b3b3b;
 }
 
-.foot-a{
+.foot-a {
   color: #ffffff;
   font-size: 0.8rem;
   text-decoration: none;
@@ -116,11 +122,11 @@ body {
   text-align: right;
 }
 
-.ghij{
+.ghij {
   justify-content: space-between;
 }
 
-.login{
+.login {
   background-color: #49b6e9f6;
   text-decoration: none;
   display: block;
@@ -134,7 +140,7 @@ body {
   border-radius: 0.5rem;
 }
 
-.signup{
+.signup {
   border: 1px solid #49b6e9f6;
   text-decoration: none;
   display: block;
@@ -144,6 +150,154 @@ body {
   color: white;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-  width: 5rem;
+  width: rem;
   border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust styles for screens with a maximum width of 768px */
+  .App {
+  }
+
+  .container {
+      flex-direction: column;
+  }
+
+  .signup {
+      width: 100%;
+  }
+
+  .login {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjust styles for screens with a maximum width of 480px */
+  .App {
+      font-size: 14px;
+  }
+
+  
+  .App-logo {
+      height: 30vmin;
+  }
+
+  .logo {
+      height: 1rem;
+  }
+
+  .foot-s {
+      font-size: 0.6rem;
+  }
+
+  .text-center {
+      font-size: 0.5rem;
+  }
+
+  .foot-a {
+      font-size: 0.7rem;
+  }
+}
+
+/* Adjust styles for screens with a maximum width of 320px */
+@media screen and (max-width: 320px) {
+  .App {
+      font-size: 12px;
+  }
+
+  .App-logo {
+      height: 25vmin;
+  }
+
+  .logo {
+      height: 0.8rem;
+  }
+
+  .foot-s {
+      font-size: 0.5rem;
+  }
+
+  .text-center {
+      font-size: 0.4rem;
+  }
+
+  .foot-a {
+      font-size: 0.6rem;
+  }
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #0e0e0e;
+  width: 100%;
+}
+
+
+
+
+
+.foot-s {
+  font-size: 0.8rem; /* Adjust font size for small screens */
+  color: white;
+  margin: 0; /* Remove default margin */
+}
+
+.text-center {
+  font-size: 0.7rem; /* Adjust font size for small screens */
+  color: #3b3b3b;
+}
+
+.foot-a {
+  color: #ffffff;
+  font-size: 0.9rem; /* Adjust font size for small screens */
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.foot-a-s p,
+.foot-s-a p {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  text-align: center; /* Center align text for small screens */
+}
+
+.ghij {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .foot {
+      padding: 0.5rem; /* Adjust padding for smaller screens */
+  }
+  
+  .foot-s,
+  .text-center,
+  .foot-a {
+      font-size: 0.7rem; /* Adjust font size for medium screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .foot {
+      padding: 0.2rem; /* Adjust padding for extra small screens */
+  }
+  
+  
+  
+
+  .foot-s,
+  .text-center,
+  .foot-a {
+      font-size: 0.6rem; /* Adjust font size for small screens */
+  }
 }

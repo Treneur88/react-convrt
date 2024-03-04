@@ -10,6 +10,9 @@
     color: red;
 }
 
+body {
+    color: white;
+}
 .already-registered p {
     margin-right: 10px;
     margin-bottom: 0;

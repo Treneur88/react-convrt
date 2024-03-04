@@ -22,11 +22,14 @@
 .d-a1 {
     display: flex;
     flex-direction: row;
+    margin-left: -12rem;
 }
 
 .or {
     margin-left: -20rem;
 }
+
+
 
 .color {
     width: 10rem;
@@ -35,6 +38,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    /* Add border-radius property */
 }
 
 .preview img {
@@ -53,13 +57,34 @@
     text-align: center;
     margin-top: 1rem;
     font-size: 1.3rem;
-    background-color: #4fbdf0;
+    background-color: #2dccef;
     text-shadow: 2px 2px 4px #000000;
+    border-radius: 1rem;
+}
+
+.label2{
+
+}
+
+input[type=color]::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+  }
+  
+input[type=color]::-webkit-color-swatch-wrapper {
+      border: none;
+      border-radius: 50%;
+      padding: 0;
 }
 
 .picker {
-    margin-top: 2rem;
-}
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
 
 .preview-but {
     margin-top: 2rem;
@@ -89,8 +114,9 @@
     text-align: center;
     margin-top: 1rem;
     font-size: 1.3rem;
-    background-color: #4fbdf0;
+    background-color: #2dccef;
     text-shadow: 2px 2px 4px #000000;
+    border-radius: 1rem;
 }
 
 

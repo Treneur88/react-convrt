@@ -16,7 +16,7 @@ const handleLogin = () => {
     console.log('Logging in...');
     
     // Add code to check if the username already exists in the user table
-    axios.get(`https://back-1-7wvo.onrender.com/checkUsername/${username}`)
+    axios.get(`checkUsername/${username}`)
         .then((response) => {
             if (response.data.exists) {
                 console.log('Username already exists');
@@ -26,7 +26,7 @@ const handleLogin = () => {
                 console.log('Username does not exist');
                 // Handle the case where the username does not exist
                 // Add code to insert new data into the user table in the MySQL database
-                axios.post('https://back-1-7wvo.onrender.com/signup', {
+                axios.post('signup', {
                     name: username,
                     password: password,
                     email: email

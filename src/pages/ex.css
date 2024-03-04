@@ -1,0 +1,18 @@
+.pri {
+    width: 60rem;
+    margin: auto;
+    text-align: left;
+    margin-bottom: 4rem;
+}
+
+.pri h2 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .pri {
+        width: 100%;
+        padding: 0 1rem;
+    }
+}

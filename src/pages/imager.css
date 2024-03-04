@@ -1,24 +1,39 @@
+.imager-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Adjust based on the height of your navbar */
+    margin: 0;
+}
 .imager {
     display: flex;
-    flex-direction: row; /* Change flex-direction to row */
-    align-items: center; /* Align items vertically */
+    flex-direction: row;
+    align-items: center;
     font-size: calc(10px + 1vmin);
     color: white;
-    margin: auto; 
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin-left: 5rem;
-    background-color: rgb(19, 19, 19);
+    background-color: #050505;
     padding-bottom: 3rem;
-    margin-right: 8rem;
+    width: 65rem;
+    padding-top: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: -4rem;
+}
+
+.imager {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: calc(10px + 1vmin);
+    color: white;
+    background-color: #050505;
+    padding-bottom: 3rem;
     width: 65rem;
     padding-left: 5rem;
     padding-top: 3rem;
+    justify-content: center;
 }
 
-body {
-    background-color: black;
-}
 
 .imager img {
     max-width: 30rem;
@@ -36,6 +51,7 @@ body {
     margin-top: 5rem;
     margin-right: 4rem;
     text-align: left;
+    
 }
 
 .like {
@@ -48,24 +64,27 @@ body {
 }
 
 .titleL {
-    background-color: black;
     color: white;
+}
+
+.imager, .imager * {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
     .imager {
-        flex-direction: column; /* Change flex-direction to column */
-        margin-left: 2rem;
-        margin-right: 2rem;
-        width: auto;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        flex-direction: column;
+        width: 80%; 
+        max-width: none; 
+        margin: 0;
+        padding: 0;
     }
 
-    .imager img {
-        max-width: 100%;
-        max-height: auto;
+    .like {}
+
+    .imager img, .contains {
+        max-width: 100%; 
     }
 
     .logo1 {

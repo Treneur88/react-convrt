@@ -12,16 +12,16 @@ function Login() {
     
  const handleLogin = () => {
     // Perform login logic here
-    axios.get(`https://back-1-7wvo.onrender.com/checkUsername/${username}`)
+    axios.get(`checkUsername/${username}`)
     .then((response) => {
         if (response.data.exists) {
             console.log('Username already exists');
-            axios.get(`https://back-1-7wvo.onrender.com/checkUsername/${username}`)
+            axios.get(`checkUsername/${username}`)
     .then((response) => {
         if (response.data.exists) {
             console.log('Username already exists');
                         // Check if password is correct for the username in the user table
-                        axios.get(`https://back-1-7wvo.onrender.com/checkPassword/${username}/${password}`)
+                        axios.get(`checkPassword/${username}/${password}`)
                         .then((response) => {
                             if (response.status === 200) {
                                 console.log('Password is correct');

@@ -65,7 +65,7 @@ function Pub() {
                     }
                 }
             });} else {
-                axios.post('/getNames', localStorage.getItem("username")).then((response) => {
+                axios.get('/getNames').then((response) => {
 
                     const listElement = document.getElementById('list');
                     const loadCount = 12;
@@ -143,7 +143,7 @@ function Pub() {
                 items.removeChild(items.firstChild);
             }
             console.log('cleared')
-            axios.get('/getNames/').then((response) => {
+            axios.get('getNames').then((response) => {
 
                 const listElement = document.getElementById('list');
                 const loadCount = 12;
@@ -152,7 +152,8 @@ function Pub() {
                 const lono = response.data.length; // Get the length of response.data array
                 const endIndex = Math.min(i + loadCount, lono + 1);
                 for (; i < endIndex; i++) {
-                    if (response.data[i]?.user === localStorage.getItem('username')) {
+                    if (response.data[i]?.user == localStorage.getItem('username')) {
+                        console.log("true user")
                         // Append item only when response.data.public is equal to 1 and item doesn't exist in the list
                         console.log(response.data[i]);
                         var item = document.createElement('li');
@@ -160,6 +161,7 @@ function Pub() {
                         var link = document.createElement('a');
                         link.classList.add('link');
                         link.href = '/share/' + response.data[i].name;
+                        console.log(link.href)
                         var img = document.createElement('img');
                         img.src = 'images/' + response.data[i].name;
                         
@@ -211,6 +213,7 @@ function Pub() {
 
                         listElement.appendChild(item);
                     }
+
                 }
                     
 
